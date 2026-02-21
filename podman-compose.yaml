@@ -20,6 +20,12 @@ services:
     ports:
       - "3000:8080"
 
+  # Settings                      Value
+  #
+  # Text-to-Speech Engine (URL) : http://openwebui-kokoro-fastapi-cpu:8880/v1
+  # Text-to-Speech Engine (KEY) : not-needed
+  # TTS Voice                   : zf_xiaoxiao (for Chinese)
+  # TTS Model                   : kokoro
   openwebui-kokoro-fastapi-cpu:
     container_name: openwebui-kokoro-fastapi-cpu
     environment:
