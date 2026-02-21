@@ -1,0 +1,35 @@
+networks:
+  openwebui_network:
+    driver: bridge
+
+services:
+  openwebui:
+    container_name: openwebui
+    environment:
+      WEBUI_SECRET_KEY: "aea3eeac-39a1-4e44-b1ac-9bf344070ebc"
+      OLLAMA_BASE_URL: "http://192.168.1.113:11434"
+      USER_AGENT: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+      HF_ENDPOINT: "https://hf-mirror.com"
+      BYPASS_MODEL_ACCESS_CONTROL: true
+    image: ghcr.io/open-webui/open-webui:main
+    networks:
+      - openwebui_network
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/backend/data
+    ports:
+      - "3000:8080"
+
+  openwebui-kokoro-fastapi-cpu:
+    container_name: openwebui-kokoro-fastapi-cpu
+    environment:
+      ONNX_EXECUTION_MODE: "parallel"
+      ONNX_OPTIMIZATION_LEVEL: "all"
+      ONNX_MEMORY_PATTERN: true
+      API_LOG_LEVEL: "DEBUG"
+    image: ghcr.io/remsky/kokoro-fastapi-cpu
+    networks:
+      - openwebui_network
+    restart: unless-stopped
+    ports:
+      - "8880:8880"
