@@ -33,7 +33,7 @@ services:
       ONNX_OPTIMIZATION_LEVEL: "all"
       ONNX_MEMORY_PATTERN: true
       API_LOG_LEVEL: "DEBUG"
-    image: ghcr.io/remsky/kokoro-fastapi-cpu
+    image: ghcr.io/remsky/kokoro-fastapi-cpu:latest
     networks:
       - openwebui_network
     restart: unless-stopped
