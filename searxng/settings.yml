@@ -1,0 +1,33 @@
+# Read the documentation before extending the defaults:
+# https://docs.searxng.org/admin/settings/
+
+use_default_settings: true
+
+server:
+  secret_key: "cf8c3485-d690-4252-b698-fc3f7762e327"
+  image_proxy: true
+
+search:
+  formats:
+    - html
+    - json
+    - csv
+
+engines:
+  - name: bing
+    engine: bing
+    shortcut: bi
+    disabled: false
+    categories: [general, web]
+    timeout: 10.0
+
+  - name: sogou
+    disabled: false
+    categories: [general, web]
+    timeout: 10.0
+
+  - name: 360search
+    engine: 360search
+    disabled: false
+    categories: [general, web]
+    timeout: 10.0

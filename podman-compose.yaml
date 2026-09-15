@@ -39,3 +39,28 @@ services:
     restart: unless-stopped
     ports:
       - "8880:8880"
+
+  # Settings                      Value
+  #
+  # Web Search                  : <ON>
+  # Web Search Engine           : searxng
+  # Searxng Query URL           : http://openwebui-searxng:8080/search?q=<query>
+  openwebui-searxng:
+    container_name: openwebui-searxng
+    image: searxng/searxng:latest
+    networks:
+      - openwebui_network
+    restart: unless-stopped
+    ports:
+      - "8881:8080"
+    volumes:
+      - ./searxng:/etc/searxng:rw
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8881/
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
