@@ -10,7 +10,7 @@ services:
       OLLAMA_BASE_URL: "http://192.168.1.113:11434"
       USER_AGENT: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
       HF_ENDPOINT: "https://hf-mirror.com"
-      BYPASS_MODEL_ACCESS_CONTROL: true
+      #BYPASS_MODEL_ACCESS_CONTROL: true
     image: ghcr.io/open-webui/open-webui:main
     networks:
       - openwebui_network
@@ -54,9 +54,9 @@ services:
     ports:
       - "8881:8080"
     volumes:
-      - ./searxng:/etc/searxng:rw
+      - ./searxng:/etc/searxng:Z
     environment:
-      - SEARXNG_BASE_URL=http://localhost:8881/
+      SEARXNG_BASE_URL: http://localhost:8881/
     cap_drop:
       - ALL
     cap_add:
@@ -64,3 +64,22 @@ services:
       - SETGID
       - SETUID
       - DAC_OVERRIDE
+
+  # Settings                      Value
+  #
+  # URL                         : http://openwebui-openterminal:8000
+  # Auth                        : Bearer
+  # API Key                     : 254b0775-5e72-4779-bcb3-985abf754c3f
+  openwebui-openterminal:
+    container_name: openwebui-openterminal
+    image: ghcr.io/open-webui/open-terminal:latest
+    networks:
+      - openwebui_network
+    restart: unless-stopped
+    environment:
+      OPEN_TERMINAL_API_KEY: 254b0775-5e72-4779-bcb3-985abf754c3f
+      OPEN_TERMINAL_MULTI_USER: "true"
+    volumes:
+      - ./openterminal:/home:Z
+    ports:
+      - "8882:8000"
