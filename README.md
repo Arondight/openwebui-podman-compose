@@ -6,9 +6,11 @@ Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI plat
 
 ## Usage
 
-Deploy and visit [http://localhost:3000/](http://localhost:3000/).
+Deploy the stack and visit [http://localhost:3000/](http://localhost:3000/).
 
-## openwebui-kokoro-fastapi-cpu
+## Configuration
+
+### openwebui-kokoro-fastapi-cpu
 
 | Settings                    | Value                                         |
 | --------------------------- | --------------------------------------------- |
@@ -16,3 +18,19 @@ Deploy and visit [http://localhost:3000/](http://localhost:3000/).
 | Text-to-Speech Engine (KEY) | `not-needed`                                  |
 | TTS Voice                   | `zf_xiaoxiao` (for Chinese)                   |
 | TTS Model                   | `kokoro`                                      |
+
+### openwebui-searxng
+
+| Settings          | Value                                            |
+| ----------------- | ------------------------------------------------ |
+| Web Search        | `<ON>`                                           |
+| Web Search Engine | `searxng`                                        |
+| Searxng Query URL | `http://openwebui-searxng:8080/search?q=<query>` |
+
+### openwebui-openterminal
+
+| Settings | Value                                  |
+| -------- | -------------------------------------- |
+| URL      | `http://openwebui-openterminal:8000`   |
+| Auth     | `Bearer`                               |
+| API Key  | `254b0775-5e72-4779-bcb3-985abf754c3f` |
