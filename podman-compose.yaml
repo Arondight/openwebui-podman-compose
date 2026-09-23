@@ -47,7 +47,7 @@ services:
   # Searxng Query URL           : http://openwebui-searxng:8080/search?q=<query>
   openwebui-searxng:
     container_name: openwebui-searxng
-    image: searxng/searxng:latest
+    image: ghcr.io/searxng/searxng:latest
     networks:
       - openwebui_network
     restart: unless-stopped
