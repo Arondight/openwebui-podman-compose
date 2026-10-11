@@ -12,12 +12,13 @@ Deploy the stack and visit [http://localhost:3000/](http://localhost:3000/).
 
 ### openwebui-kokoro-fastapi-cpu
 
-| Settings                    | Value                                         |
-| --------------------------- | --------------------------------------------- |
-| Text-to-Speech Engine (URL) | `http://openwebui-kokoro-fastapi-cpu:8880/v1` |
-| Text-to-Speech Engine (KEY) | `not-needed`                                  |
-| TTS Voice                   | `zf_xiaoxiao` (for Chinese)                   |
-| TTS Model                   | `kokoro`                                      |
+| Settings              | Value                                         |
+| --------------------- | --------------------------------------------- |
+| Text-to-Speech Engine | `OpenAI`                                      |
+| API Base URL          | `http://openwebui-kokoro-fastapi-cpu:8880/v1` |
+| API Key               | `not-needed`                                  |
+| TTS Voice             | `zf_xiaoxiao` (for Chinese)                   |
+| TTS Model             | `kokoro`                                      |
 
 ### openwebui-searxng
 

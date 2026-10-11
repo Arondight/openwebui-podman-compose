@@ -7,11 +7,8 @@ services:
     container_name: openwebui
     environment:
       WEBUI_SECRET_KEY: "aea3eeac-39a1-4e44-b1ac-9bf344070ebc"
-      OLLAMA_BASE_URL: "http://192.168.1.113:11434"
       USER_AGENT: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
       HF_ENDPOINT: "https://hf-mirror.com"
-      HF_HUB_DISABLE_XET: 1
-      #BYPASS_MODEL_ACCESS_CONTROL: true
     image: ghcr.io/open-webui/open-webui:main
     networks:
       - openwebui_network
@@ -21,12 +18,13 @@ services:
     ports:
       - "3000:8080"
 
-  # Settings                      Value
+  # Settings                  Value
   #
-  # Text-to-Speech Engine (URL) : http://openwebui-kokoro-fastapi-cpu:8880/v1
-  # Text-to-Speech Engine (KEY) : not-needed
-  # TTS Voice                   : zf_xiaoxiao (for Chinese)
-  # TTS Model                   : kokoro
+  # Text-to-Speech Engine   : OpenAI
+  # API Base URL            : http://openwebui-kokoro-fastapi-cpu:8880/v1
+  # API Key                 : not-needed
+  # TTS Voice               : zf_xiaoxiao (for Chinese)
+  # TTS Model               : kokoro
   openwebui-kokoro-fastapi-cpu:
     container_name: openwebui-kokoro-fastapi-cpu
     environment:
@@ -41,11 +39,11 @@ services:
     ports:
       - "8880:8880"
 
-  # Settings                      Value
+  # Settings                  Value
   #
-  # Web Search                  : <ON>
-  # Web Search Engine           : searxng
-  # Searxng Query URL           : http://openwebui-searxng:8080/search?q=<query>
+  # Web Search              : <ON>
+  # Web Search Engine       : searxng
+  # Searxng Query URL       : http://openwebui-searxng:8080/search?q=<query>
   openwebui-searxng:
     container_name: openwebui-searxng
     image: ghcr.io/searxng/searxng:latest
@@ -66,11 +64,11 @@ services:
       - SETUID
       - DAC_OVERRIDE
 
-  # Settings                      Value
+  # Settings                  Value
   #
-  # URL                         : http://openwebui-openterminal:8000
-  # Auth                        : Bearer
-  # API Key                     : 254b0775-5e72-4779-bcb3-985abf754c3f
+  # URL                     : http://openwebui-openterminal:8000
+  # Auth                    : Bearer
+  # API Key                 : 254b0775-5e72-4779-bcb3-985abf754c3f
   openwebui-openterminal:
     container_name: openwebui-openterminal
     image: ghcr.io/open-webui/open-terminal:latest
